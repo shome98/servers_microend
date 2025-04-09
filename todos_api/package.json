@@ -1,0 +1,17 @@
+{
+  "name": "todos_api",
+  "version": "1.0.0",
+  "description": "just a simple api for todos",
+  "keywords": [
+    "server",
+    "api",
+    "todos"
+  ],
+  "license": "ISC",
+  "author": "Sowparna Shome",
+  "type": "module",
+  "main": "server.ts",
+  "scripts": {
+    "test": "test"
+  }
+}
