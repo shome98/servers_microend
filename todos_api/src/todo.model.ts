@@ -10,8 +10,8 @@ interface ITodo extends Document{
 }
 const todoSchema = new Schema<ITodo>({
     userId: { type: Schema.Types.ObjectId, ref: 'User' },
-    title: { type: String },
-    description: { type: String},
+    title: { type: String, required: true },
+    description: { type: String },
     completed: { type: Boolean, default: false },
 }, { timestamps: true });
 const Todo = models?.Todo||mongoose.model<ITodo>("Todo", todoSchema);
