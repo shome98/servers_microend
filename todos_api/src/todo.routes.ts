@@ -1,5 +1,6 @@
 import { Router,Request,Response,NextFunction } from "express";
-import { createTodo, getTodoById, getTodos, toggleComplete, updateTodo } from "./todo.controller";
+import { createTodo, deleteTodo, getTodoById, getTodos, toggleComplete, updateTodo } from "./todo.controller";
+import { auth } from "./auth.middleware";
 
 export const asyncHandler = (requestHandler: (req: Request, res: Response, next: NextFunction) => Promise<any>) => {
     return (req: Request, res: Response, next: NextFunction) => {
@@ -8,10 +9,11 @@ export const asyncHandler = (requestHandler: (req: Request, res: Response, next:
 };
 const router = Router();
 
-router.get("/", asyncHandler(getTodos));
-router.post("/", asyncHandler(createTodo));
-router.get("/:id", asyncHandler(getTodoById));
-router.post("/:id", asyncHandler(updateTodo));
-router.patch("/:id", asyncHandler(toggleComplete));
+router.get("/", asyncHandler(auth),asyncHandler(getTodos));
+router.post("/", asyncHandler(auth),asyncHandler(createTodo));
+router.get("/:id", asyncHandler(auth),asyncHandler(getTodoById));
+router.post("/:id", asyncHandler(auth),asyncHandler(updateTodo));
+router.patch("/:id", asyncHandler(auth), asyncHandler(toggleComplete));
+router.delete("/:id", asyncHandler(auth), asyncHandler(deleteTodo));
 
 export default router;
