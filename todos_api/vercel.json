@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "build": {
+    "src": "todos_api/src/server.ts",
+    "use": "@vercel/node"
+  },
+  "routes": [
+    {
+      "src": "/api/v1/(.*)",
+      "dest": "todos_api/src/server.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "todos_api/src/server.ts"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb_uri",
+    "ACCESS_TOKEN_SECRET": "@access_token_secret",
+    "PORT": "3000"
+  }
+}
