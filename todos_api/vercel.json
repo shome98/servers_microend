@@ -13,10 +13,5 @@
       "src": "/(.*)",
       "dest": "todos_api/src/server.ts"
     }
-  ],
-  "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "ACCESS_TOKEN_SECRET": "@access_token_secret",
-    "PORT": "3000"
-  }
+  ]
 }
