@@ -1,6 +1,6 @@
 import mongoose, { Connection } from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+const MONGODB_URI = "mongodb+srv://shomeshome234:oyK2WdR4Z0SJqM7q@cluster0.hjb3h.mongodb.net/todo_nextsaas";
 
 if (!MONGODB_URI) {
   throw new Error(

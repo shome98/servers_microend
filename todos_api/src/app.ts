@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectToDatabase } from "./connect.db";
+import todoRoutes from "./todo.routes"
 
 const app = express();
 
@@ -16,8 +17,9 @@ app.get("/", (req: Request, res: Response) => {
     res.send("😊 Welcome to api!!!!")
 });
 
-// connectToDatabase()
-//     .then(() => console.log("✅ Connected to database"))
-//     .catch(error => console.log("❌ Database connection Failed with ", error));
+app.use("/api/v1/todos", todoRoutes);
+connectToDatabase()
+    .then(() => console.log("✅ Connected to database"))
+    .catch(error => console.log("❌ Database connection Failed with ", error));
 
 export default app;
