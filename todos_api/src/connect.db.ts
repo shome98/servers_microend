@@ -1,11 +1,11 @@
 import mongoose, { Connection } from "mongoose";
+import dotenv from "dotenv";
 
-const MONGODB_URI = "mongodb+srv://shomeshome234:oyK2WdR4Z0SJqM7q@cluster0.hjb3h.mongodb.net/todo_nextsaas";
+dotenv.config();
+const MONGODB_URI = process.env.MONGODB_URI!;
 
 if (!MONGODB_URI) {
-  throw new Error(
-    "Please define the MONGODB_URI environment variable inside .env.local"
-  );
+  throw new Error("Please define the MONGODB_URI environment variable inside .env");
 }
 
 let cached = global.mongoose;
@@ -28,7 +28,7 @@ export async function connectToDatabase(): Promise<Connection> {
     };
 
     cached.promise = mongoose
-      .connect(MONGODB_URI, opts)
+      .connect(MONGODB_URI!, opts)
       .then((mongoose) => mongoose.connection);
   }
 
