@@ -2,8 +2,8 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { connectToDatabase } from "./connect.db";
-import todoRoutes from "./todo.routes"
+import { connectToDatabase } from "./connect.db.ts";
+import todoRoutes from "./todo.routes.ts"
 
 const app = express();
 
