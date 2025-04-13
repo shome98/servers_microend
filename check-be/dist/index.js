@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = require("./app");
 const http_1 = __importDefault(require("http"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const server = http_1.default.createServer((req, res) => {
     if (req.method === "GET") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -17,6 +19,7 @@ const server = http_1.default.createServer((req, res) => {
         res.end('Method Not Allowed');
     }
 });
-server.listen(9000, () => {
-    console.log("there is something running on http://localhost:9000");
+const port = process.env.PORT;
+server.listen(port, () => {
+    console.log(`there is something running on http://localhost:${port}`);
 });

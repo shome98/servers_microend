@@ -1,6 +1,8 @@
 import { add } from "./app";
-import http from "http"
+import http from "http";
+import dotenv from "dotenv";
 
+dotenv.config();
 const server = http.createServer((req,res) => {
     if (req.method === "GET") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -13,6 +15,7 @@ const server = http.createServer((req,res) => {
     res.end('Method Not Allowed');
   }
 });
-server.listen(9000, () => {
-    console.log("there is something running on http://localhost:9000");
+const port = process.env.PORT;
+server.listen(port, () => {
+    console.log(`there is something running on http://localhost:${port}`);
 })
