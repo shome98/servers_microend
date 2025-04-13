@@ -1,5 +1,5 @@
 import express from "express";
-import { add } from "../src/add";
+import { add } from "./add";
 const app = express();
 
 app.get("/", (req,res) => {
