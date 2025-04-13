@@ -22,4 +22,6 @@ connectToDatabase()
     .then(() => console.log("✅ Connected to database"))
     .catch(error => console.log("❌ Database connection Failed with ", error));
 
+app.listen(process.env.PORT, () => console.log(`Server is running at http://localhost:${process.env.PORT}`));
+
 export default app;
