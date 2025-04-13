@@ -6,6 +6,7 @@ import {
   updateItemById,
   deleteItemById,
 } from '../controllers/item.controller';
+import { middleware } from '../middlware';
 
 export const asyncHandler = (requestHandler: (req: Request, res: Response, next: NextFunction) => Promise<any>) => {
     return (req: Request, res: Response, next: NextFunction) => {
@@ -19,7 +20,7 @@ const router = express.Router();
 router.post('/', asyncHandler(createItem));
 
 // Get all items
-router.get('/', asyncHandler(getAllItems));
+router.get('/', asyncHandler(middleware),asyncHandler(getAllItems));
 
 // Get a single item by ID
 router.get('/:id', asyncHandler(getItemById));

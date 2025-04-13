@@ -13,9 +13,11 @@ export const createItem = async (req: Request, res: Response) => {
 
 // Get all items
 export const getAllItems = async (req: Request, res: Response) => {
-  try {
+    try {
+        const uid = req.userId;
+        
     const items = await ItemModel.find();
-    res.status(200).json(items);
+    res.status(200).json({items,"uid":uid});
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
