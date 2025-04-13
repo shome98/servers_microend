@@ -1,6 +1,6 @@
 import { Router,Request,Response,NextFunction } from "express";
-import { createTodo, deleteTodo, getTodoById, getTodos, toggleComplete, updateTodo } from "./todo.controller.ts";
-import { auth } from "./auth.middleware.ts";
+import { createTodo, deleteTodo, getTodoById, getTodos, toggleComplete, updateTodo } from "./todo.controller";
+import { auth } from "./auth.middleware";
 
 export const asyncHandler = (requestHandler: (req: Request, res: Response, next: NextFunction) => Promise<any>) => {
     return (req: Request, res: Response, next: NextFunction) => {
